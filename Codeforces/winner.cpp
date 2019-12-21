@@ -1,3 +1,7 @@
+//Created on Sat Dec 21 12:00:00 2019
+
+//@author: divyanshvinayak
+
 #include <bits/stdc++.h>
 using namespace std;
 int main()
@@ -12,7 +16,6 @@ int main()
         int N, MAX;
         cin>>N;
         vector <int> L, M;
-        set <int> S;
         L.insert(L.end(), 0);
         if(N>100000)
             MAX = int(N/1000);

@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Dec 21 12:00:00 2019
+
+@author: divyanshvinayak
+"""
+
 N = int(input())
 Z = set()
 for I in range(N):

@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Dec 21 12:00:00 2019
+
+@author: divyanshvinayak
+"""
+
 T = int(input())
 for i in range(T):
     N = int(input())
