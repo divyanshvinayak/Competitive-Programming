@@ -61,22 +61,23 @@ vvll output;
 char op;
 
 //<<-----Implement Functions Here---->>//
-ll power(ll a, ll b)
+ll power(ll x, ll y, ll p)
 {
-    ans = 1;
-    while(b)
-	{
-        if(b&1)
-			ans = (ans * a) % MOD;
-        a = (a * a) % MOD;
-        b = b / 2;
+	ans = 1, x = x % p;
+	if(x == 0) return 0;
+    while(y > 0)
+    {
+        if(y & 1)
+            ans = (ans * x) % p;
+        y = y >> 1;
+        x = (x * x) % p;
     }
     return ans;
 }
 
 ll modulo(ll p, ll q, ll m)
 {
-    return ((power(q, m - 2) % m) * (p % m)) % m;
+    return (power(q, m-2, m) * (p % m)) % m;
 }
 
 void solve()
