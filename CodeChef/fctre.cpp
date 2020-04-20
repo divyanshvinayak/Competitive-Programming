@@ -29,7 +29,7 @@ typedef unordered_set<ll> us;
 #define F first
 #define S second
 #define mp make_pair
-#define pb push_back
+#define pb emplace_back
 #define all(v) v.begin(), v.end()
 #define allr(arr, r) arr, arr + r
 #define showv(v) for(auto it: v) cout<<it.F<<':'<<it.S<<' '; ln;
@@ -68,7 +68,7 @@ void sieve()
 {
     FORI(i, 3, MAXN, 2)
         spf[i] = i;
-    FOR(i, 3, sqrt(MAXN)+1)
+    FORI(i, 3, sqrt(MAXN), 2)
         if(spf[i]==i)
             FORI(j, i*i, MAXN, i)
                 if(spf[j]==j)
@@ -99,7 +99,7 @@ vpll merge(vpll x, vpll y)
     i = 0, j = 0, max_x = sz(x), max_y = sz(y), counter = {};
     while(i < max_x && j < max_y)
         if(x[i].F==y[j].F)
-            counter.pb(mp(x[i].F, x[i].S+y[j].S)), i++, j++;
+            counter.pb(x[i].F, x[i].S+y[j].S), i++, j++;
         else if(x[i].F<y[j].F)
             counter.pb(x[i]), i++;
         else
@@ -116,7 +116,7 @@ vpll difference(vpll x, vpll y)
     i = 0, j = 0, max_x = sz(x), max_y = sz(y), counter = {};
     while(j < max_y)
         if(x[i].F==y[j].F)
-            counter.pb(mp(x[i].F, x[i].S-y[j].S)), i++, j++;
+            counter.pb(x[i].F, x[i].S-y[j].S), i++, j++;
         else
             counter.pb(x[i]), i++;
     while(i < max_x)
@@ -204,7 +204,7 @@ int main()
             {
                 y = spf[x], x /= y;
                 if(y>m)
-                    a[i].pb(mp(y, 1)), m = y;
+                    a[i].pb(y, 1), m = y;
                 else
                     a[i].back().S++;
             }
