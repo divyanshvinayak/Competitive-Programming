@@ -49,12 +49,12 @@ typedef unordered_set<ll> us;
 #define sz(a) a.size()
 #define precise(x) cout<<fixed<<setprecision(x);
 
-const ll MAXN = 1e6+5, MOD = 1e9+7, SIZE = 2e5+5, BLOCKSIZE = 1e3, LN = 19, INF = 0x7f7f7f7f7f7f7f7f;
+const ll MAXN = 1e6+5, MOD = 1e9+7, SIZE = 1e5+5, BLOCKSIZE = 1e3, LN = 19, INF = 0x7f7f7f7f7f7f7f7f;
 const int INFi = 0x7f7f7f7f;
 const double EPS = 1e-9, PI = acos(-1);
 
 //<<------Declare Variables Here----->>//
-ll t, n, x, y, q, lca, val, ptr, d, dx, min_f, max_x, max_y, ans, L, R, fai[SIZE], lai[SIZE], dp[SIZE << 1][LN], logn[SIZE], visited[SIZE], counter[MAXN], res[SIZE], id[SIZE << 1], inv[LN * SIZE], euler[SIZE << 1], depth[SIZE << 1];
+ll t, n, x, y, q, lca, val, ptr, d, dx, min_f, ans, L, R, fai[SIZE], lai[SIZE], dp[SIZE << 2][LN], logn[SIZE << 1], visited[SIZE], counter[MAXN], res[SIZE], id[SIZE << 1], euler[SIZE << 1], depth[SIZE << 1], inv[LN * SIZE];
 vll spf(MAXN, 2), pow2(LN, 1);
 vvll v;
 vpll factors, a[SIZE];
@@ -76,7 +76,7 @@ void precompute()
                     spf[j] = i;
     FOR(i, 1, LN)
         pow2[i] = pow2[i-1] * 2;
-    FOR(i, 1, SIZE)
+    FOR(i, 1, SIZE<<1)
     {
         logn[i] = ptr-1;
         if(i==val)
@@ -89,7 +89,7 @@ void precompute()
 void initialize()
 {
     ptr = 0;
-    v = vvll(n+1);
+    v = vvll(n+5);
     reset(counter, 0);
     reset(visited, 0);
 }
