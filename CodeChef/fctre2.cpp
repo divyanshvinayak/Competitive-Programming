@@ -55,8 +55,7 @@ const double EPS = 1e-9, PI = acos(-1);
 
 //<<------Declare Variables Here----->>//
 ll t, n, x, y, q, lca, val, ptr, d, dx, min_f, ans, L, R, fai[SIZE], lai[SIZE], dp[SIZE << 2][LN], logn[SIZE << 1], visited[SIZE], counter[MAXN], res[SIZE], id[SIZE << 1], euler[SIZE << 1], depth[SIZE << 1], inv[LN * SIZE];
-vll spf(MAXN, 2), pow2(LN, 1);
-vvll v;
+vll spf(MAXN, 2), pow2(LN, 1), v[SIZE];
 vpll factors, a[SIZE];
 struct query_t
 {
@@ -89,7 +88,7 @@ void precompute()
 void initialize()
 {
     ptr = 0;
-    v = vvll(n+5);
+    reset(v, {});
     reset(counter, 0);
     reset(visited, 0);
 }
@@ -150,7 +149,7 @@ ll query(ll l, ll r)
     d = r-l, dx = logn[d];
     if(l==r)
         return l;
-    if(depth[dp[l][dx]] > depth[dp[r-pow2[dx]][dx]])
+    if(depth[dp[l][dx]]>depth[dp[r-pow2[dx]][dx]])
         return dp[r-pow2[dx]][dx];
     else
         return dp[l][dx];
