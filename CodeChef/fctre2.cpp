@@ -75,12 +75,12 @@ void precompute()
                 if(spf[j]==j)
                     spf[j] = i;
     FOR(i, 1, LN)
-        pow2[i] = pow2[i-1] * 2;
+        pow2[i] = pow2[i-1] << 1;
     FOR(i, 1, SIZE<<1)
     {
         logn[i] = ptr-1;
         if(i==val)
-            val *= 2, logn[i] = ptr, ptr++;
+            val <<= 1, logn[i] = ptr, ptr++;
     }
     FOR(i, 2, LN*SIZE)
         inv[i] = (inv[MOD % i] * (MOD - MOD / i)) % MOD;
@@ -135,10 +135,10 @@ void DFS(ll cur, ll prev, ll dep)
 
 void buildSparseTable()
 {
-    FOR(i, 1, 2*n)
+    FOR(i, 1, n<<1)
         dp[i-1][0] = (depth[i]>depth[i-1])?i-1:i;
     FOR(l, 1, LN)
-        FOR(i, 0, 2*n)
+        FOR(i, 0, n<<1)
             if(dp[i][l-1]!=-1 && dp[i+pow2[l-1]][l-1]!=-1)
                 dp[i][l] = (depth[dp[i][l-1]]>depth[dp[i+pow2[l-1]][l-1]])?dp[i+pow2[l-1]][l-1]:dp[i][l-1];
             else
